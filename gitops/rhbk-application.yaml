@@ -8,7 +8,7 @@ metadata:
   namespace: openshift-gitops
 spec:
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: "https://kubernetes.default.svc"
   project: default
   source:
     path: gitops/rhbk
