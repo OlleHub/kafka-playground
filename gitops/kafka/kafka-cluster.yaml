@@ -17,8 +17,6 @@ spec:
       min.insync.replicas: 2
       inter.broker.protocol.version: '3.8'
       allow.everyone.if.no.acl.found: 'true'
-    storage:
-      type: ephemeral
     listeners:
       - name: plain
         port: 9092
@@ -29,11 +27,6 @@ spec:
         type: internal
         tls: true
     version: 3.8.0
-    replicas: 3
   entityOperator:
     topicOperator: {}
     userOperator: {}
-  zookeeper:
-    storage:
-      type: ephemeral
-    replicas: 3
