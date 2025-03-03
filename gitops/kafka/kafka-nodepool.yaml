@@ -19,3 +19,26 @@ spec:
         deleteClaim: false
     type: jbod
   replicas: 3
+
+---
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaNodePool
+metadata:
+  labels:
+    strimzi.io/cluster: my-cluster
+  name: my-borker-pool
+  annotations:
+    argocd.argoproj.io/sync-wave: "-5"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  namespace: kafka
+spec:
+  replicas: 3
+  roles:
+    - broker
+  storage:
+    type: jbod
+    volumes:
+      - deleteClaim: false
+        id: 0
+        size: 100Gi
+        type: persistent-claim
