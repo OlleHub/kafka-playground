@@ -9,4 +9,5 @@ resources:
   # Cluster
   - kafka-namespace.yaml
   - kafka-cluster.yaml
+  - kafka-nodepool.yaml
   - kafka-user.yaml

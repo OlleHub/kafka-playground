@@ -4,6 +4,7 @@ metadata:
   name: my-pool
   labels:
     strimzi.io/cluster: my-cluster
+    argocd.argoproj.io/sync-wave: "-5"
   namespace: kafka
 spec:
   roles:
