@@ -3,15 +3,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    app: rhbk
-  name: rhbk
+    app: kafka
+  name: kafka
   namespace: openshift-gitops
 spec:
   destination:
     server: "https://kubernetes.default.svc"
   project: default
   source:
-    path: gitops/rhbk
+    path: gitops/kafka
     repoURL: https://github.com/olle-hub/kafka-playground.git
     targetRevision: main
   syncPolicy:
