@@ -11,7 +11,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: gitops
+    path: gitops/rhbk
     repoURL: https://github.com/olle-hub/kafka-playground.git
     targetRevision: main
   syncPolicy:
