@@ -2,6 +2,7 @@ apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaUser
 metadata:
   name: kafka-user
+  namespace: kafka
   labels:
     strimzi.io/cluster: my-cluster
     argocd.argoproj.io/sync-wave: "-5"
