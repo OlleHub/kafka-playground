@@ -14,17 +14,9 @@ spec:
   authorization:
     acls:
       - operations:
+          - Create
           - Describe
-          - DescribeConfigs
-        resource:
-          name: ""
-          patternType: literal
-          type: cluster
-      - operations:
-          - Read
-          - Describe
-          - DescribeConfigs
-          - All
+          - Write
         resource:
           name: "*"
           patternType: literal

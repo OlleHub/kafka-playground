@@ -15,8 +15,7 @@ spec:
       transaction.state.log.min.isr: 2
       default.replication.factor: 3
       min.insync.replicas: 2
-      inter.broker.protocol.version: '3.8'
-      allow.everyone.if.no.acl.found: 'true'
+      allow.everyone.if.no.acl.found: "true"
     listeners:
       - name: plain
         port: 9092
@@ -27,6 +26,8 @@ spec:
         type: internal
         tls: true
     version: 3.8.0
+    authorization:
+      type: simple
   entityOperator:
     topicOperator: {}
     userOperator: {}
