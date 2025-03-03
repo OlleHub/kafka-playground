@@ -1,0 +1,71 @@
+<div *ngIf="isLoading" class="loading-overlay">
+  <div class="loading-indicator">
+    Loading products...
+  </div>
+</div>
+
+<div class="checkout-container">
+  <div class="left-panel">
+    <h2 class="panel-title">Available Products</h2>
+    <div class="product" *ngFor="let product of inventory" (click)="openPopup(product)">
+      <div class="product-image" [ngStyle]="getProductImageStyle(product)"></div>
+      <span class="product-name">
+        {{ product.name }}
+      </span>
+      <span class="product-price">{{ product.price | currency: 'EUR' }}</span>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <h2 class="panel-title">Selected Products</h2>
+    <div class="selected-product" *ngFor="let selectedProduct of selectedProducts; let i = index">
+      <div class="selected-product-info">
+        <div class="product-image-small" [ngStyle]="getProductImageStyle(selectedProduct)">
+          <div class="quantity-indicator-container">
+            <span class="quantity-indicator">{{ selectedProduct.quantity }}</span>
+          </div>
+        </div>
+        <span class="product-name">
+          {{ selectedProduct.name }}
+        </span>
+        <span class="product-price">
+          {{ calculateProductPrice(selectedProduct) | currency: 'EUR' }}
+        </span>
+        <button class="remove-button" (click)="removeProduct(i)">x</button>
+      </div>
+    </div>
+    <div *ngIf="selectedProducts.length > 0" class="total-section">
+      <hr class="separator-line" />
+      <p class="total">TOTAL: {{ calculateTotalPrice() | currency: 'EUR' }}</p>
+    </div>
+    <div *ngIf="selectedProducts.length === 0">No items selected for checkout</div>
+    <button class="checkout-button-left" (click)="checkout()">Checkout</button>
+    <button class="reset-button" (click)="reset()">Restart</button>
+  </div>
+</div>
+
+<div class="popup" *ngIf="showPopup">
+  <div class="popup-content">
+    <h3><span class="product-name">{{ selectedProduct.name }}</span></h3>
+    <div class="quantity">
+      <button (click)="decrementQuantity()">-</button>
+      <span>{{ selectedQuantity }}</span>
+      <button (click)="incrementQuantity()">+</button>
+    </div>
+    <button (click)="addProduct()">OK</button>
+  </div>
+</div>
+
+<div *ngIf="showPopupCheckout" class="popup">
+  <div class="popup-content">
+    <p [ngClass]="{'warning-text': showWarning}" *ngIf="showWarning">WARNING</p>
+    <p [ngClass]="{'ok-text': showOK}" *ngIf="showOK">CHECKOUT COMPLETED</p>
+    <p>{{ popupCheckoutMessage }}</p>
+    <ul *ngIf="missingProducts.length > 0">
+      <li *ngFor="let product of missingProducts" class="left-align-list">
+        {{ product.name }} ({{product.difference}})
+      </li>
+    </ul>
+    <button (click)="closeCheckoutPopup()">Close</button>
+  </div>
+</div>

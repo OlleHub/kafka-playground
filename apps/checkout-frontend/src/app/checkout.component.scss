@@ -1,0 +1,244 @@
+.checkout-container {
+    display: flex;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.left-panel {
+    flex: 0.3;
+    background-color: #f2f2f2;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.right-panel {
+    flex: 0.7;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.product {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #ddd;
+    justify-content: space-between;
+}
+
+.product-image {
+    width: 60px;
+    height: 60px;
+    background-color: #ffffff;
+    margin-right: 10px;
+}
+
+.selected-product {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f2f2f2;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.popup-content {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.quantity span {
+    background-color: #f2f2f2;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.popup button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.quantity button {
+    background-color: #ffffff;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.checkout-button-left {
+    background-color: #3498db;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.checkout-button-left:hover {
+    background-color: #2980b9;
+}
+
+.reset-button {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-left: 20px;
+}
+
+.reset-button:hover {
+    background-color: #cc0000;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading-indicator {
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.left-align-list {
+    text-align: left;
+    list-style-position: inside;
+}
+
+.remove-button {
+    border: none;
+    background: transparent;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    float: right;
+    margin-left: 10px;
+}
+
+.panel-title {
+    font-size: 1.5rem;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    margin-left: auto;
+    text-align: right;
+}
+
+.quantity-indicator {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    border-radius: 10%;
+}
+
+.quantity-indicator-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: -10px;
+    margin-top: -10px;
+    background-color: black;
+    color: #fff;
+    border-radius: 10%;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+.product-image-small {
+    position: relative;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+}
+
+.selected-product-info {
+    display: flex;
+    align-items: center;
+}
+
+.product-name {
+    text-transform: capitalize;
+    flex: 1;
+}
+
+.warning-text {
+    font-weight: bold;
+    color: red;
+    font-size: 24px;
+    animation: textAnimation 1s infinite alternate;
+}
+
+.ok-text {
+    font-weight: bold;
+    color: #3498db;
+    font-size: 24px;
+    animation: textAnimation 1s infinite alternate;
+}
+
+@keyframes textAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
