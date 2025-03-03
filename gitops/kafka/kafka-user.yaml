@@ -5,7 +5,9 @@ metadata:
   namespace: kafka
   labels:
     strimzi.io/cluster: my-cluster
+  annotations:
     argocd.argoproj.io/sync-wave: "-5"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   authentication:
     type: scram-sha-512
@@ -15,7 +17,7 @@ spec:
           - Describe
           - DescribeConfigs
         resource:
-          name: ''
+          name: ""
           patternType: literal
           type: cluster
       - operations:
@@ -24,14 +26,14 @@ spec:
           - DescribeConfigs
           - All
         resource:
-          name: '*'
+          name: "*"
           patternType: literal
           type: topic
       - operations:
           - Read
           - Describe
         resource:
-          name: '*'
+          name: "*"
           patternType: literal
           type: group
     type: simple
