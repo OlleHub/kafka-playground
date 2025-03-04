@@ -16,7 +16,7 @@ import jakarta.ws.rs.core.MediaType;
 @Path("/inventory")
 public class InventoryResource {
 
-   @Inject
+    @Inject
     @Channel("inventory")
     Multi<List<Product>> inventory;
 
