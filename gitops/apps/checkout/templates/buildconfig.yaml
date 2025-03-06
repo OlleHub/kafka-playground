@@ -1,0 +1,47 @@
+{{- if eq .Values.buildConfigType "quarkus" }}
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: {{ .Values.appName }}
+  namespace: {{ .Values.appNamespace }}
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: "{{ .Values.appName }}:latest"
+  source:
+    contextDir: "/apps/checkout/{{ .Values.appName }}"
+    git:
+      uri: "https://github.com/OlleHub/kafka-playground.git"
+      ref: ""
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: java:openjdk-17-ubi8
+        namespace: openshift
+
+{{- else if eq .Values.buildConfigType "angular" }}
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: {{ .Values.appName }}
+  namespace: {{ .Values.appNamespace }}
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: "{{ .Values.appName }}:latest"
+  source:
+    contextDir: "/apps/checkout/{{ .Values.appName }}"
+    git:
+      uri: "https://github.com/OlleHub/kafka-playground.git"
+      ref: ""
+  strategy:
+    type: Docker
+    dockerStrategy:
+      env: []
+      dockerfilePath: Containerfile
+
+{{- end }}

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appName }}
+  namespace: {{ .Values.appNamespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.appName }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appName }}
+        deployment: {{ .Values.appName }}
+    spec:
+      containers:
+        - name: {{ .Values.appName }}
+          image: "image-registry.openshift-image-registry.svc:5000/{{ .Values.appNamespace }}/{{ .Values.appName }}:latest"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+{{- if eq .Values.buildConfigType "quarkus" }}
+            - containerPort: 8443
+              protocol: TCP
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: my-cluster-kafka-bootstrap:9092
+{{- else if eq .Values.buildConfigType "angular" }}
+          env:
+            - name: SYS_INVENTORY_URL
+              value: "https://{{ .Values.hostName }}/inventory"
+            - name: SYS_UPDATES_URL
+              value: "https://{{ .Values.hostName }}/inventory/updates"
+{{- end }}

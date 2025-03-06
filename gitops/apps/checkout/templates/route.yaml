@@ -1,0 +1,21 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: {{ .Values.appName }}
+  namespace: {{ .Values.appNamespace }}
+spec:
+  to:
+    kind: Service
+    name: {{ .Values.appName }}
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+    caCertificate: ""
+    certificate: ""
+    destinationCACertificate: ""
+    key: ""
+  host: ""
+  path: ""
+  port:
+    targetPort: "8080-tcp"
+  wildcardPolicy: None
