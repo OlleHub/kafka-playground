@@ -26,8 +26,6 @@ spec:
         type: internal
         tls: true
     version: 3.8.0
-    authorization:
-      type: simple
   entityOperator:
     topicOperator: {}
     userOperator: {}

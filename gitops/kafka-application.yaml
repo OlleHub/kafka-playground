@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: gitops/kafka
-    repoURL: https://github.com/olle-hub/kafka-playground.git
+    repoURL: https://github.com/OlleHub/kafka-playground.git
     targetRevision: main
   syncPolicy:
     automated:
