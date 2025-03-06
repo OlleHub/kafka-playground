@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Values.appName }}
+  namespace: {{ .Values.appNamespace }}
+spec:
+  selector:
+    app: {{ .Values.appName }}
+    deployment: {{ .Values.appName }}
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: 8080-tcp
+    - port: 8443
+      targetPort: 8443
+      protocol: TCP
+      name: 8443-tcp
