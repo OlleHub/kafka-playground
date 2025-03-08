@@ -5,7 +5,7 @@ metadata:
   labels:
     strimzi.io/cluster: my-cluster
   annotations:
-    argocd.argoproj.io/sync-wave: "-5"
+    argocd.argoproj.io/sync-wave: "-10"
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   namespace: kafka
 spec:
@@ -18,7 +18,7 @@ spec:
         size: 100Gi
         deleteClaim: false
     type: jbod
-  replicas: 3
+  replicas: 1
 
 ---
 apiVersion: kafka.strimzi.io/v1beta2
@@ -28,11 +28,11 @@ metadata:
     strimzi.io/cluster: my-cluster
   name: my-broker-pool
   annotations:
-    argocd.argoproj.io/sync-wave: "-5"
+    argocd.argoproj.io/sync-wave: "-10"
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   namespace: kafka
 spec:
-  replicas: 3
+  replicas: 1
   roles:
     - broker
   storage:
