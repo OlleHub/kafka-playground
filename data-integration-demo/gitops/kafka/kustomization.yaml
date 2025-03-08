@@ -4,6 +4,9 @@ kind: Kustomization
 resources:
   - kafka-operator.yaml
   - kafka-namespace.yaml
-  - kafka-cluster.yaml
   - kafka-nodepool.yaml
+  - kafka-cluster.yaml
   - kafka-topic.yaml
+  - kafka-connect.yaml
+  - kafka-connector.yaml
+

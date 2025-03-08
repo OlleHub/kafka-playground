@@ -1,0 +1,5 @@
+CREATE USER debezium WITH PASSWORD 'debezium' REPLICATION;
+ALTER SYSTEM SET wal_level = logical;
+GRANT ALL PRIVILEGES ON DATABASE inventory TO debezium;
+ALTER USER debezium WITH SUPERUSER;
+flush
